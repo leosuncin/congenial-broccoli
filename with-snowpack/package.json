@@ -1,4 +1,8 @@
 {
+  "name": "coffee-shop",
+  "description": "",
+  "version": "1.0.0",
+  "private": true,
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build",
