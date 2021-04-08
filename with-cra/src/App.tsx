@@ -1,56 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
 import './App.css';
+
+import OrderBacklog from './components/OrderBacklog';
+import Customers from './components/Customers';
+import OrderCounter from './components/OrderCounter';
+import OrderForm from './components/OrderForm';
+import OrdersList from './components/OrdersList';
+import SearchBox from './components/SearchBox';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+    <div className="app container">
+      <div className="row">
+        <div className="col-12 text-center mb-4">
+          <h1>Coffee Shop</h1>
+        </div>
+        <div className="col-sm-6">
+          <OrderForm />
+          <hr />
+          <Customers />
+          <OrdersList />
+        </div>
+        <div className="col-sm-6">
+          <OrderCounter />
+          <SearchBox />
+          <OrderBacklog />
+        </div>
+      </div>
     </div>
   );
 }
