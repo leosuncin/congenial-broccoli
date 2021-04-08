@@ -1,0 +1,6 @@
+@import '~bootstrap/dist/css/bootstrap.css';
+
+.app {
+  max-width: 90%;
+  margin: 30px auto;
+}
