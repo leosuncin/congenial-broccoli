@@ -16,9 +16,9 @@ function Customers() {
   }
 
   return (
-    <div>
+    <ul className="p-0">
       {customers.map((customer) => (
-        <div
+        <li
           key={customer.id}
           className={`${styles.customerCard} ${
             customer.selected ? styles.selected : ''
@@ -30,9 +30,9 @@ function Customers() {
             {backlog.filter((order) => order.customer === customer.id).length}
           </div>
           {customer.name}
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
 
