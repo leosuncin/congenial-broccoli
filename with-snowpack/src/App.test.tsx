@@ -1,12 +1,20 @@
-import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { expect } from 'chai';
-import App from './App';
+import * as React from 'react';
+import { Provider } from 'react-redux';
 
-describe('<App>', () => {
-  it('renders learn react link', () => {
-    const { getByText } = render(<App />);
-    const linkElement = getByText(/learn react/i);
-    expect(document.body.contains(linkElement));
+import App from './App';
+import { store } from './store';
+
+describe('<App />', () => {
+  it('renders "Coffee Shop" heading', () => {
+    render(
+      <Provider store={store}>
+        <App />
+      </Provider>,
+    );
+
+    const headingElement = screen.getByText(/coffee shop/i);
+    expect(document.body.contains(headingElement));
   });
 });
