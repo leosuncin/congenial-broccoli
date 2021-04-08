@@ -17,9 +17,9 @@ function Customers() {
   }
 
   return (
-    <div>
+    <ul className="p-0">
       {customers.map((customer) => (
-        <div
+        <li
           key={customer.id}
           className={'customer-card ' + (customer.selected ? 'selected' : '')}
           onClick={markAsSelected.bind(null, customer.id)}
@@ -29,9 +29,9 @@ function Customers() {
             {backlog.filter((order) => order.customer === customer.id).length}
           </div>
           {customer.name}
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
 
