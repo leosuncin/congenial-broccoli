@@ -1,14 +1,16 @@
 {
   "name": "coffee-shop",
-  "description": "",
   "version": "1.0.0",
   "private": true,
+  "description": "Experiment with redux@alpha",
+  "license": "GPL-3.0",
+  "author": "Jaime Leonardo Suncin Cruz <leosuncin@gmail.com>",
   "scripts": {
-    "start": "snowpack dev",
     "build": "snowpack build",
-    "test": "web-test-runner \"src/**/*.test.tsx\"",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
-    "lint": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\""
+    "lint": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\"",
+    "start": "snowpack dev",
+    "test": "web-test-runner \"src/**/*.test.tsx\""
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.0-alpha.0",

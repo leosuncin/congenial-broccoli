@@ -1,10 +1,14 @@
 {
   "name": "coffee-shop",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Experiment with redux@alpha",
+  "license": "GPL-3.0",
+  "author": "Jaime Leonardo Suncin Cruz <leosuncin@gmail.com>",
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview",
+    "dev": "vite",
+    "start": "vite preview",
     "test": "vite --config vite.config.test.ts"
   },
   "dependencies": {

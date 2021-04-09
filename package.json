@@ -1,8 +1,10 @@
 {
   "name": "congenial-broccoli",
   "version": "1.0.0",
-  "description": "Experiment with redux@alpha",
   "private": true,
+  "description": "Experiment with redux@alpha",
+  "license": "GPL-3.0",
+  "author": "Jaime Leonardo Suncin Cruz <leosuncin@gmail.com>",
   "scripts": {
     "codeceptjs": "codeceptjs run --steps",
     "codeceptjs:def": "codeceptjs def",
@@ -16,7 +18,5 @@
     "playwright": "^1.10.0",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.4"
-  },
-  "license": "GPL-3.0",
-  "author": "Jaime Leonardo Suncin Cruz <leosuncin@gmail.com>"
+  }
 }
