@@ -1,20 +1,14 @@
 import './OrderBacklog.css';
 
-import { backlogSelector, markOrderAsDone } from '../slices/backlogSlice';
+import { markOrderAsDone } from '../slices/backlogSlice';
 import { customersSelector } from '../slices/customersSlice';
-import {
-  searchResultsSelector,
-  searchTermSelector,
-} from '../slices/searchSlice';
+import { searchResultsSelector } from '../slices/searchSlice';
 import { useAppDispatch, useAppSelector } from '../store';
 
 function OrderBacklog() {
-  const backlog = useAppSelector(backlogSelector);
   const customers = useAppSelector(customersSelector);
   const searchResults = useAppSelector(searchResultsSelector);
-  const searchTerm = useAppSelector(searchTermSelector);
   const dispatch = useAppDispatch();
-  const ordersBacklog = searchTerm ? searchResults : backlog;
 
   function markAsDone(id: string) {
     dispatch(markOrderAsDone(id));
@@ -22,7 +16,7 @@ function OrderBacklog() {
 
   return (
     <div>
-      {ordersBacklog.map((order) => (
+      {searchResults.map((order) => (
         <div key={order.time} className="order-card">
           <div className="clearfix">
             <strong className="float-left py-2 mb-0">Items list:</strong>
