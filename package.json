@@ -1,0 +1,20 @@
+{
+  "name": "congenial-broccoli",
+  "version": "0.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "codeceptjs": "codeceptjs run --steps",
+    "codeceptjs:def": "codeceptjs def",
+    "codeceptjs:headless": "HEADLESS=true codeceptjs run --steps",
+    "codeceptjs:ui": "codecept-ui --app"
+  },
+  "devDependencies": {
+    "@codeceptjs/ui": "^0.4.3",
+    "codeceptjs": "^3.0.6",
+    "envalid": "^7.1.0",
+    "playwright": "^1.10.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
+  }
+}
