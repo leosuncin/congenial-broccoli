@@ -1,33 +1,20 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
-
-import { addOrder, CreateOrder } from '../slices/ordersSlice';
+import { addOrder } from '../slices/ordersSlice';
 import { useAppDispatch } from '../store';
-
-const defaultValues: CreateOrder = {
-  order: '',
-  amount: 1,
-};
 
 function OrderForm() {
   const dispatch = useAppDispatch();
-  const [order, setOrder] = useState(defaultValues.order);
-  const [amount, setAmount] = useState(defaultValues.amount);
 
-  function handleChange(event: ChangeEvent<HTMLInputElement>) {
-    if (event.target.name === 'amount') {
-      setAmount(Number(event.target.value));
-    }
-    if (event.target.name === 'order') {
-      setOrder(event.target.value);
-    }
-  }
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    const form = event.target as HTMLFormElement;
     event.preventDefault();
 
-    dispatch(addOrder({ order, amount }));
-    setOrder(defaultValues.order);
-    setAmount(defaultValues.amount);
+    if (form.checkValidity()) {
+      const $order = form.elements.namedItem('order') as HTMLInputElement;
+      const $amount = form.elements.namedItem('amount') as HTMLInputElement;
+
+      dispatch(addOrder({ order: $order.value, amount: +$amount.value }));
+      form.reset();
+    }
   }
 
   return (
@@ -41,8 +28,7 @@ function OrderForm() {
           type="text"
           placeholder="Order"
           required
-          value={order}
-          onChange={handleChange}
+          defaultValue=""
         />
       </div>
       <div className="form-group">
@@ -56,8 +42,7 @@ function OrderForm() {
           inputMode="numeric"
           step="1"
           min="1"
-          value={amount}
-          onChange={handleChange}
+          defaultValue={1}
         />
       </div>
       <button type="submit" className="btn btn-success btn-block">

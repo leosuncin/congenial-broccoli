@@ -1,19 +1,31 @@
-import { useState } from 'react';
-
-import { changeSearchTerm } from '../slices/searchSlice';
-import { useAppDispatch } from '../store';
+import { changeSearchTerm, searchTermSelector } from '../slices/searchSlice';
+import { useAppDispatch, useAppSelector } from '../store';
 
 function SearchBox() {
-  const [searchTerm, setSearchTerm] = useState('');
   const dispatch = useAppDispatch();
+  const searchTerm = useAppSelector(searchTermSelector);
+
+  function handleSearch(event: React.FormEvent<HTMLFormElement>) {
+    const form = event.target as HTMLFormElement;
+    event.preventDefault();
+    const search = (form.elements.namedItem('search') as HTMLInputElement)
+      .value;
+
+    if (search) {
+      dispatch(changeSearchTerm(search));
+    }
+  }
 
   function clearSearch() {
-    setSearchTerm('');
     dispatch(changeSearchTerm(''));
   }
 
   return (
-    <div className="input-group my-2">
+    <form
+      className="input-group my-2"
+      onSubmit={handleSearch}
+      onReset={clearSearch}
+    >
       <input
         type="search"
         className="form-control"
@@ -21,29 +33,22 @@ function SearchBox() {
         aria-label="Search"
         aria-describedby="Search for order items"
         name="search"
-        value={searchTerm}
-        onChange={(event) => setSearchTerm(event.target.value)}
       />
       <div className="input-group-append">
         <button
           className={
             'btn btn-outline-danger ' + (searchTerm ? 'd-block' : 'd-none')
           }
-          onClick={clearSearch}
           aria-label="Clear search term"
-          type="button"
+          type="reset"
         >
           &times;
         </button>
-        <button
-          className="btn btn-outline-secondary"
-          onClick={() => dispatch(changeSearchTerm(searchTerm))}
-          type="button"
-        >
+        <button className="btn btn-outline-secondary" type="submit">
           Search
         </button>
       </div>
-    </div>
+    </form>
   );
 }
 
