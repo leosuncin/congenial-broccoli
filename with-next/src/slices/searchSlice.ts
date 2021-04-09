@@ -50,13 +50,19 @@ export const { changeSearchTerm } = searchSlice.actions;
  */
 export const searchTermSelector = (state: AppState): string =>
   state[SEARCH_FEATURE_KEY];
+
 export const searchResultsSelector = createSelector(
   backlogSelector,
   searchTermSelector,
-  (backlog, searchTerm) =>
-    backlog.filter((order) =>
-      order.list.find((item) => RegExp(searchTerm, 'i').test(item.order)),
-    ),
+  (backlog, searchTerm) => {
+    if (!searchTerm) return backlog;
+
+    const searchRegex = RegExp(searchTerm, 'i');
+
+    return backlog.filter((order) =>
+      Boolean(order.list.find((item) => searchRegex.test(item.order))),
+    );
+  },
 );
 
 /*
