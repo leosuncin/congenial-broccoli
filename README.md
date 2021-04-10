@@ -83,7 +83,7 @@ You can set the next environment variables to change the config of the test runn
 
 ## TODO
 
-- [ ] Add more unit tests
+- [x] Add more unit tests
 - [ ] Use an API to make request
 
 ## Author
