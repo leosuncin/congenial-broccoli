@@ -37,7 +37,7 @@ export const orderSlice = createSlice<OrderState, OrderCaseReducer>({
     addOrder(state, action) {
       state.push({
         order: action.payload.order,
-        amount: Number(action.payload.amount),
+        amount: action.payload.amount,
         id: nanoid(),
       });
     },
