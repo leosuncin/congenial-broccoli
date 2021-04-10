@@ -13,9 +13,7 @@ function SearchBox() {
     const search = (form.elements.namedItem('search') as HTMLInputElement)
       .value;
 
-    if (search) {
-      dispatch(changeSearchTerm(search));
-    }
+    dispatch(changeSearchTerm(search));
   }
 
   function clearSearch() {
