@@ -14,14 +14,13 @@ function OrderBacklog() {
   }
 
   return (
-    <div>
+    <div data-testid="backlog">
       {searchResults.map((order) => (
-        <div key={order.time} className={styles.orderCard}>
+        <div key={order.id} className={styles.orderCard}>
           <div className="clearfix">
             <strong className="float-left py-2 mb-0">Items list:</strong>
             <button
               className="btn btn-sm mt-1 btn-success float-right"
-              data-testid={`done-${order.id}`}
               onClick={markAsDone.bind(null, order.id)}
             >
               DONE

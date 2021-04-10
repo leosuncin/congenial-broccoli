@@ -32,7 +32,7 @@ function OrdersList() {
 
   return (
     <>
-      <ul className="pt-3 list-unstyled">
+      <ul className="pt-3 list-unstyled" data-testid="orders">
         {orders.map((order) => (
           <li
             key={order.id}
@@ -45,7 +45,6 @@ function OrdersList() {
             <div className="flex-fill flex-shrink-1 p-1">
               <button
                 className="btn btn-danger"
-                data-testid={`delete-${order.id}`}
                 onClick={handleDeleteOrder.bind(null, order.id)}
               >
                 delete
